@@ -79,6 +79,7 @@ export default function UserRoutes(app) {
     }
     const courses = courseDao.findCoursesForEnrolledUser(userId);
     res.json(courses);
+    console.log("-------------------------", courses);
   };
   app.get("/api/users/:userId/courses", findCoursesForEnrolledUser);
 
@@ -87,6 +88,8 @@ export default function UserRoutes(app) {
     const newAssignment = assignmentsDao.createAssignment(req.body);
     courseDao.addAssignmentInCourse(newCourse._id, newAssignment._id);
     res.json(newAssignment);
+
+    
   };
   app.post("/api/users/current/courses/:courseId", createAssignment);
 
